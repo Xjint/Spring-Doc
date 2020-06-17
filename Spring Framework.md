@@ -4,7 +4,7 @@
 
 > Spring中关于IOC的实现在包*org.springframework.beans*,*org.springframework.context*
 
-![image-20200607220453355](../images/IOC%20Container.jpg)
+![image-20200607220453355](./images/IOC%20Container.jpg)
 
 ### 1.1 容器概述
 
