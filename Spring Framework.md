@@ -143,7 +143,28 @@ public class Config{
 
 ##### 启动&关机回调(Startup & Shutdown Callbacks)
 
+`Lifecycle`接口
 
+```java
+public interface Lifecycle {
+
+    void start();
+
+    void stop();
+
+    boolean isRunning();
+}
+```
+
+`Lifecycle`接口为**具有生命周期的任意对象**提供一致的接口
+
+> 容器本身也可以实现该接口，当容器接收到启动/停止信号时，会级联调用容器内所有实现该接口的对象，具体的调用工作是由`LifecycleProcessor`完成的
+
+
+
+> `Lifecycle`接口只是代表了实现了该接口的对象具有生命周期，**不代表在上下文(context)刷新时==自动启动==** ，如果需要自动启动的功能，可以考虑实现`SmartLifecycle`接口
+
+如果有 ==对象A== ---依赖-->==对象B== 那么对象A则应该在对象B之后启动，在对象B之前停止​​，`SmartLifecycle`的父接口`Phased`的`getPhase()`方法的返回值代表了**具有生命周期对象的自启动的优先级**，值越小，越早启动/越晚停止
 
 #### 1.5.2 `Aware`系列接口
 
