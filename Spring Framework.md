@@ -166,9 +166,19 @@ public interface Lifecycle {
 
 如果有 ==对象A== ---依赖-->==对象B== 那么对象A则应该在对象B之后启动，在对象B之前停止​​，`SmartLifecycle`的父接口`Phased`的`getPhase()`方法的返回值代表了**具有生命周期对象的自启动的优先级**，值越小，越早启动/越晚停止
 
+> 只实现了`Lifecycle`而未实现`SmartLifecycle`的对象，**其Phased值相当于0**
+
+> `Lifecycle`和`SmartLifecycle`的区别在于实现了前者的对象不会自动起/停，需要显式调用start/stop方法，而实现了后者的对象则会自动随着容器起/停，phased值定义其自动工作的优先级
+
+##### 在非web应用中关闭容器(*待补充*)
+
 #### 1.5.2 `Aware`系列接口
 
+`Aware`接口为一个顶级的空接口，子类是各种组件的aware即`xxxAware`，当类实现了`xxxAware`时，该类中会持有一个访问xxx的引用，如果实现了`BeanFactoryAware`接口，那么类中就会持有一个能够访问`BeanFactory`的引用
 
+> 实现该类接口会将代码耦合到Spring框架中，所以不推荐使用，主要应用在基建类Bean中
+
+### Bean定义继承(Bean Definition Inheritance)
 
 
 
