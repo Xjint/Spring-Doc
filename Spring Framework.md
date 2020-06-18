@@ -178,7 +178,34 @@ public interface Lifecycle {
 
 > 实现该类接口会将代码耦合到Spring框架中，所以不推荐使用，主要应用在基建类Bean中
 
-### Bean定义继承(Bean Definition Inheritance)
+### 1.6 Bean定义继承(Bean Definition Inheritance)
+
+Bean在容器中以`BeanDefinition`的形式存储，Bean的定义采用父子继承的模型
+
+子类Bean继承父类Bean的：
+
+- 作用域scope
+- 构造函数的参数值
+- 属性值
+- 方法重载
+
+子类自己单独定义的：
+
+- 依赖项
+- 自动装配模式
+- 依赖项检查
+- 是否为单例
+- 惰性初始化
+
+### 1.7 容器拓展(Container Extension Points)
+
+> 如果要对容器进行一些定制化，不需要继承`ApplicationContext`，可以实现Spring提供的各类功能的接口来进行拓展
+
+#### 1.7.1 `BeanPostProcessor`
+
+
+
+
 
 
 
