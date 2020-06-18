@@ -199,11 +199,31 @@ Bean在容器中以`BeanDefinition`的形式存储，Bean的定义采用父子�
 
 ### 1.7 容器拓展(Container Extension Points)
 
-> 如果要对容器进行一些定制化，不需要继承`ApplicationContext`，可以实现Spring提供的各类功能的接口来进行拓展
+> 如果要对容器进行一些定制化，不需要实现`ApplicationContext`，可以实现Spring提供的各类功能的接口来进行拓展
 
 #### 1.7.1 `BeanPostProcessor`
 
+`BeanPostProcessor`负责在bean实例化之后、调用初始化方法前后添加自定义的逻辑
 
+#### 1.7.2 ``BeanFactoryPostProcessor``
+
+
+
+
+
+
+
+### 1.x Bean构造流程
+
+容器启动后，将非延迟加载的Bean注册到容器中
+
+1. 调用Bean的构造函数初始化Bean
+2. 若实现`BeanPostProcessor`接口，调用`postProcessBeforeInitialization`方法
+3. 若指定`init-method`/实现`InitializingBean`接口/`@PostStruct`注解，那么执行对应的方法
+4. 若实现`BeanPostProcessor`接口，调用`postProcessAfterInitialization`方法
+5. 使用Bean
+6. 卸载时，若指定`destroy-method`/实现`DisposableBean`接口/`@PreDestroy`注解，那么执行对应的方法
+7. 卸载
 
 
 
