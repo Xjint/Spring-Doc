@@ -203,7 +203,9 @@ Bean在容器中以`BeanDefinition`的形式存储，Bean的定义采用父子�
 
 #### 1.7.1 `BeanPostProcessor`
 
-`BeanPostProcessor`负责在bean实例化之后、调用初始化方法前后添加自定义的逻辑
+`BeanPostProcessor`负责在bean实例化之后、调用初始化方法前后添加自定义的逻辑，可以有多个`BeanPostProcessor`，可通过实现`Ordered`接口来定义多个`BeanPostProcessor`的优先级
+
+> 由于AOP本身是通过`BeanPostProcessor`来实现的，所以`BeanPostProcessor`类不能用作AOP
 
 #### 1.7.2 ``BeanFactoryPostProcessor``
 
@@ -231,8 +233,16 @@ Bean在容器中以`BeanDefinition`的形式存储，Bean的定义采用父子�
 
 ## 2. Resources
 
+## x. Spring相关注解的使用
 
+> 本章节主要介绍一些在学习Spring的过程中了解到的一些注解的使用方法
 
+### 定时任务
+
+- `@Scheduled` 将所标注的方法设置为定时方法，定时参数可通过该注解的参数设置
+
+- `@Schedules`其参数为`@Scheduled`数组，用来指定一个方法可以有多种定时方式
+> 启动类要加`@EnableScheduling`注解，表明启动定时功能
 
 
 
