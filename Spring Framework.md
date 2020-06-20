@@ -207,8 +207,21 @@ Bean在容器中以`BeanDefinition`的形式存储，Bean的定义采用父子�
 
 > 由于AOP本身是通过`BeanPostProcessor`来实现的，所以`BeanPostProcessor`类不能用作AOP
 
-#### 1.7.2 ``BeanFactoryPostProcessor``
+####  1.7.2 `BeanFactoryPostProcessor`
 
+`BeanFactoryPostProcessor`和`BeanPostProcessor`类似，只不过`BeanFactoryPostProcessor`是用来处理**构建容器的元数据**的
+
+BeanPostProcessor是在Bean实例化后做的追加操作，BeanFactoryPostProcessor是在Bean放入容器之前就进行的追加操作，可以修改Bean的属性、生命周期等。
+
+`BeanFactoryPostProcessor`的一个比较典型的应用就是将bean的属性配置放在外部的配置文件中，比如数据库连接的四个属性
+
+#### 1.7.3 `FactoryBean`
+
+如果某个Bean是工厂类，那么它就可以实现这个接口。在Spring容器中，调用`getBean("id")`会得到名为`id`的`Bean实例`，而`getBean("&id")`则会得到生产名为id的Bean的`工厂Bean`
+
+### 1.8 基于注解的配置方式
+
+> - 基于注解的配置优先于xml方式，也就是说同一属性的配置，xml方式会覆盖掉注解的方式
 
 
 
