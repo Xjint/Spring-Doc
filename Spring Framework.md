@@ -93,11 +93,6 @@ public class Config{
 
 #### 依赖和详细配置
 
-##### `@Autowired`四种自动装配的模式
-
-- 无
-- byName
-- byType
 - 
 
 
@@ -223,9 +218,19 @@ BeanPostProcessor是在Bean实例化后做的追加操作，BeanFactoryPostProce
 
 > - 基于注解的配置优先于xml方式，也就是说同一属性的配置，xml方式会覆盖掉注解的方式
 
+#### `@Autowired`
 
+- ##### 四种自动装配的模式
 
+  - 无
+  - byName
+  - byType
 
+  如果一个bean中只有一个构造函数，那么这个构造函数上就不需要加该注解也可以生效。
+
+  `@Autowired`是由`BeanPostProcessor`实现的，所以在自定义的`BeanPostProcessor`中不能加`@Autowired`
+
+###  1.9使用 JSR 330 规范注解
 
 
 ### 1.x Bean构造流程
